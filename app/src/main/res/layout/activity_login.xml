@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:layout_centerInParent="true"
+        android:id="@+id/email"
+        tools:ignore="MissingConstraints" />
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/email"
+        android:layout_marginTop="10dp"
+        android:id="@+id/password"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/password"
+        android:layout_marginTop="10dp"
+        android:id="@+id/btn_login"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/register"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btn_login"
+        android:text="Нет учетной записи? Зарегистрируйтесь!"
+        android:layout_marginTop="10dp"
+        android:textSize="15dp"
+        />
+</RelativeLayout>
