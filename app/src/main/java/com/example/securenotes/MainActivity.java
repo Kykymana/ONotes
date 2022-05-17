@@ -1,5 +1,6 @@
 package com.example.securenotes;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,11 +32,29 @@ public class MainActivity extends AppCompatActivity {
     private TextView t1;
     private Button notes;
     private Button create_note;
+    private int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String user_uid = user.getUid();
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://notes-46688-default-rtdb.firebaseio.com/");
+        DatabaseReference user_data = database.getReference("User: " + user_uid);
+
+        //user_data.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        //    @Override
+        //    public void onComplete(@NonNull Task<DataSnapshot> task) {
+        //        if (!task.isSuccessful()) {
+        //            user_data.child("Count").setValue("0");
+        //        }
+        //        else {
+        //        }
+//
+        //    }
+        //});
 
         gosite = findViewById(R.id.gosite);
         github = findViewById(R.id.github);
@@ -96,9 +117,22 @@ public class MainActivity extends AppCompatActivity {
         create_note.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent notes = new Intent(MainActivity.this, Notes.class);
-                notes.putExtra("true", 1);
-                startActivity(notes);
+                Intent create_notes = new Intent(MainActivity.this, Notes.class);
+
+                //user_data.child("Count").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                //    @Override
+                //    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                //        if (!task.isSuccessful()) {
+                //        }
+                //        else {
+                //            count = Integer.parseInt(task.getResult().getValue().toString().replace("[", "").replace("]", "")) + 1;
+                //        }
+                //    }
+                //});
+//
+                //user_data.child("Заметка " + String.valueOf(count)).setValue("");
+                //user_data.child("Count").setValue(String.valueOf(count));
+                startActivity(create_notes);
             }
         });
 

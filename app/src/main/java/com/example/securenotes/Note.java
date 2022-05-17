@@ -48,9 +48,9 @@ public class Note extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
-                    note.setText(task.getResult().getValue().toString().replace("[", "").replace("]", ""));
                 }
                 else {
+                    note.setText(task.getResult().getValue().toString().replace("[", "").replace("]", ""));
                 }
 
             }
