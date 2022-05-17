@@ -13,6 +13,12 @@
             android:name=".Painting"
             android:exported="true" />
         <activity
+            android:name=".Notes"
+            android:exported="true" />
+        <activity
+            android:name=".Note"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true" />
         <activity
