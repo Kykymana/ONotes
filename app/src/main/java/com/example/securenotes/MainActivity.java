@@ -32,7 +32,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView t1;
     private Button notes;
     private Button create_note;
-    private int count;
+
+    private int counter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,18 +45,6 @@ public class MainActivity extends AppCompatActivity {
         String user_uid = user.getUid();
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://notes-46688-default-rtdb.firebaseio.com/");
         DatabaseReference user_data = database.getReference("User: " + user_uid);
-
-        //user_data.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-        //    @Override
-        //    public void onComplete(@NonNull Task<DataSnapshot> task) {
-        //        if (!task.isSuccessful()) {
-        //            user_data.child("Count").setValue("0");
-        //        }
-        //        else {
-        //        }
-//
-        //    }
-        //});
 
         gosite = findViewById(R.id.gosite);
         github = findViewById(R.id.github);
@@ -67,6 +57,29 @@ public class MainActivity extends AppCompatActivity {
         notes = findViewById(R.id.save);
         create_note = findViewById(R.id.load);
 
+        user_data.child("Counter").child("Count").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int count = Integer.parseInt(dataSnapshot.getValue(String.class)) + 1;
+                counter = count; }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+        //user_data.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        //    @Override
+        //    public void onComplete(@NonNull Task<DataSnapshot> task) {
+        //        if (task.isSuccessful()) {
+        //            user_data.child("Counter").child("Count").setValue("0");
+        //        }
+        //        else {
+        //        }
+        //    }
+        //});
 
         gosite.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,19 +132,21 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent create_notes = new Intent(MainActivity.this, Notes.class);
 
-                //user_data.child("Count").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                //    @Override
-                //    public void onComplete(@NonNull Task<DataSnapshot> task) {
-                //        if (!task.isSuccessful()) {
-                //        }
-                //        else {
-                //            count = Integer.parseInt(task.getResult().getValue().toString().replace("[", "").replace("]", "")) + 1;
-                //        }
-                //    }
-                //});
-//
-                //user_data.child("Заметка " + String.valueOf(count)).setValue("");
-                //user_data.child("Count").setValue(String.valueOf(count));
+                user_data.child("Counter").child("Count").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        int count = Integer.parseInt(dataSnapshot.getValue(String.class)) + 1;
+                        counter = count;
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        user_data.child("Counter").child("Count").setValue("1");
+                    }
+                });
+                user_data.child("Заметка " + String.valueOf(counter)).setValue("");
+                user_data.child("Counter").child("Count").setValue(String.valueOf(counter));
+
                 startActivity(create_notes);
             }
         });
