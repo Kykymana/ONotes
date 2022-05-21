@@ -52,7 +52,6 @@ public class Note extends AppCompatActivity {
                 else {
                     note.setText(task.getResult().getValue().toString().replace("[", "").replace("]", ""));
                 }
-
             }
         });
 
@@ -61,8 +60,8 @@ public class Note extends AppCompatActivity {
             public void onClick(View view) {
                 String tittle = String.valueOf(note.getText());
                 user_data.child("Заметка " + String.valueOf(index + 1)).setValue(tittle);
-                Intent notes = new Intent(Note.this, Notes.class);
-                startActivity(notes);
+                Intent main = new Intent(Note.this, MainActivity.class);
+                startActivity(main);
             }
         });
 

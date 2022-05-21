@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private Button yandex;
     private Button paint;
     private EditText sitetext;
-    private EditText test;
-    private TextView t1;
     private Button notes;
     private Button create_note;
 
@@ -52,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
         yandex = findViewById(R.id.yandex);
         paint  = findViewById(R.id.paint);
         sitetext = findViewById(R.id.sitetext);
-        test = findViewById(R.id.test);
-        t1 = findViewById(R.id.t1);
         notes = findViewById(R.id.save);
         create_note = findViewById(R.id.load);
 
@@ -72,18 +68,6 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-
-
-        //user_data.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-        //    @Override
-        //    public void onComplete(@NonNull Task<DataSnapshot> task) {
-        //        if (task.isSuccessful()) {
-        //            user_data.child("Counter").child("Count").setValue("0");
-        //        }
-        //        else {
-        //        }
-        //    }
-        //});
 
         gosite.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
                         user_data.child("Counter").child("Count").setValue("1");
                     }
                 });
+
                 user_data.child("Заметка " + String.valueOf(counter)).setValue("");
                 user_data.child("Counter").child("Count").setValue(String.valueOf(counter));
 

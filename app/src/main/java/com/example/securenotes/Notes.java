@@ -27,15 +27,10 @@ import java.util.ArrayList;
 
 public class Notes extends ListActivity {
 
-
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
