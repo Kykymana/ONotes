@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                user_data.child("Counter").child("Count").setValue("1");
             }
         });
 

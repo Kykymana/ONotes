@@ -27,58 +27,43 @@ import java.util.ArrayList;
 
 public class Notes extends ListActivity {
 
-    ArrayList<String> note_list = new ArrayList<String>();
 
 
-    //private TextView test;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_notes);
-//
-        //test = findViewById(R.id.test123);
 
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String user_uid = user.getUid();
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://notes-46688-default-rtdb.firebaseio.com/");
-        DatabaseReference user_data = database.getReference("User: "+ user_uid);
+        DatabaseReference user_data = database.getReference("User: " + user_uid);
 
         user_data.child("Counter").child("Count").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String count = dataSnapshot.getValue(String.class);
-                for (int i = 0; i < Integer.parseInt(count); i++) {
-                           note_list.add("Заметка" + String.valueOf(i + 1));
-                       }
+                int count = Integer.parseInt(dataSnapshot.getValue(String.class)) + 1;
+
+                ArrayList<String> note_list = new ArrayList<String>();
+
+                for (int i = 1; i < count; i++) {
+                    note_list.add("Заметка " + String.valueOf(i));
+
+                }
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_list_item_1, note_list);
+                setListAdapter(adapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 
-        //user_data.child("Counter").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-        //    @Override
-        //    public void onComplete(@NonNull Task<DataSnapshot> task) {
-        //        if (!task.isSuccessful()) {
-        //            count = task.getResult().getValue().toString();
-        //        }
-        //        else {
-//
-        //            //for (int i = 0; i < count; i++) {
-        //            //    note_list.add("Заметка " + String.valueOf(i + 1));
-        //            //}
-        //        }
-        //    }
-        //});
-
-
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, note_list);
-        setListAdapter(adapter);
     }
     protected void onListItemClick(ListView l, View v, int position, long id) {
         Intent note = new Intent(Notes.this, Note.class);
