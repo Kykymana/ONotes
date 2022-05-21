@@ -60,12 +60,16 @@ public class MainActivity extends AppCompatActivity {
         user_data.child("Counter").child("Count").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int count = Integer.parseInt(dataSnapshot.getValue(String.class)) + 1;
-                counter = count; }
-
+                if (dataSnapshot.getValue(String.class) != null){
+                    int count = Integer.parseInt(dataSnapshot.getValue(String.class)) + 1;
+                    counter = count;
+                }
+                else {
+                    user_data.child("Counter").child("Count").setValue("0");
+                }
+                 }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                user_data.child("Counter").child("Count").setValue("1");
             }
         });
 
