@@ -1,4 +1,4 @@
-package com.example.securenotes.data;
+package com.example.securenotes.Painting;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -29,7 +29,7 @@ public class MyDraw extends View {
         paint.setStrokeWidth(5);
         paint.setARGB(1000, 0, 255, 200);
         for (int i = 0; i < x.size(); i++) {
-            canvas.drawCircle(x.get(i), y.get(i), 20, paint);
+            canvas.drawCircle(x.get(i), y.get(i), 10, paint);
         }
         invalidate();
     }

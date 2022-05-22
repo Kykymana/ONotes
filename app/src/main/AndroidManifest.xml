@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SecureNotes">
         <activity
-            android:name=".Painting"
+            android:name=".Painting.Painting"
             android:exported="true" />
         <activity
-            android:name=".Notes"
+            android:name=".Note.Notes"
             android:exported="true" />
         <activity
-            android:name=".Note"
+            android:name=".Note.Note"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
@@ -26,10 +26,10 @@
             android:exported="true"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".Enter.RegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Enter.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
