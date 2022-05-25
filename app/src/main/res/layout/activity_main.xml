@@ -11,9 +11,10 @@
 
     <Button
         android:id="@+id/google"
-        style="@android:style/Widget.Holo.Light.Button.Toggle"
+        style="@android:style/Widget.Material.Button.Borderless"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:text="Google"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -33,7 +34,8 @@
 
     <Button
         android:id="@+id/gosite"
-        style="@android:style/Widget.Holo.Light.Button.Toggle"
+        style="@android:style/Widget.Material.Button.Borderless"
+        android:textColor="@color/black"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="Перейти"
@@ -44,7 +46,8 @@
 
     <Button
         android:id="@+id/github"
-        style="@android:style/Widget.Holo.Light.Button.Toggle"
+        android:textColor="@color/black"
+        style="@android:style/Widget.Material.Button.Borderless"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="GitHub"
@@ -55,8 +58,9 @@
 
     <Button
         android:id="@+id/yandex"
-        style="@android:style/Widget.Holo.Light.Button.Toggle"
+        style="@android:style/Widget.Material.Button.Borderless"
         android:layout_width="0dp"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:text="Yandex"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,24 +82,13 @@
         app:layout_constraintTop_toBottomOf="@+id/gosite" />
 
     <Button
-        android:id="@+id/paint"
-        style="@android:style/Widget.Material.Light.Button.Toggle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Наброски"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:icon="@color/teal_200"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
         android:id="@+id/save"
-        style="@android:style/Widget.Material.Light.Button.Toggle"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        style="@android:style/Widget.Material.Light.Button.Borderless"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Заметки"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/load"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -103,12 +96,13 @@
 
     <Button
         android:id="@+id/load"
-        style="@android:style/Widget.Material.Light.Button.Toggle"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        style="@android:style/Widget.Material.Light.Button.Borderless"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Создать заметку"
-        app:layout_constraintBottom_toTopOf="@+id/paint"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
